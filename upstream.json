@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/bkerler/mtkclient",
+  "commit": "cd25cf9c1ff6d36e82697ac2c798e69e9cfb78c3",
+  "archiveSHA256": "90af12d45023f7d8e2161910910351e2e9f2ab555401484e6f86f44fff0a21b2",
+  "localPatches": [
+    "mtkclient/Library/mtk_class.py",
+    "mtkclient/config/usb_ids.py"
+  ]
+}

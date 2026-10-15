@@ -1,0 +1,18 @@
+{
+  "testkey.x509.pem": {
+    "url": "https://android.googlesource.com/platform/build/+/android-8.1.0_r1/target/product/security/testkey.x509.pem?format=TEXT",
+    "sha256": "a4384ba815b9499a5ce349b4e33c1755278873fe2eac150a068823f526e6dbde"
+  },
+  "testkey.pk8": {
+    "url": "https://android.googlesource.com/platform/build/+/android-8.1.0_r1/target/product/security/testkey.pk8?format=TEXT",
+    "sha256": "495675d32e89a149d5abe191f4e9c0e218b9068714e9b53a7c91e164a0741a23"
+  },
+  "SignApk.java": {
+    "url": "https://android.googlesource.com/platform/build/+/android-8.1.0_r1/tools/signapk/src/com/android/signapk/SignApk.java?format=TEXT",
+    "sha256": "c9d7e4f029c1652b7896ade25264b36a2813f98a3c7739116104fe58c562036d"
+  },
+  "verifier.cpp": {
+    "url": "https://android.googlesource.com/platform/bootable/recovery/+/android-8.1.0_r1/verifier.cpp?format=TEXT",
+    "sha256": "60454eddfd2d881adc9d74059767e3217fd783330500775a839b573eec0ae102"
+  }
+}

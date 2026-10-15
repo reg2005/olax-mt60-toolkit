@@ -1,0 +1,17 @@
+.venv/
+.runtime/
+.codebase-memory/
+__pycache__/
+*.pyc
+*.log
+state/
+backups/
+release/
+*.img
+*.bin
+*.zip
+*.pk8
+*.pem
+ota/build/
+ota/vendor/SignApk.java
+ota/vendor/verifier.cpp

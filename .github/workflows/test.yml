@@ -1,0 +1,48 @@
+name: Offline safety checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - run: python setup.py --skip-doctor
+      - name: Python tests (Unix)
+        if: runner.os != 'Windows'
+        run: .venv/bin/python scripts/test.py
+      - name: Python tests (Windows)
+        if: runner.os == 'Windows'
+        run: .venv\Scripts\python.exe scripts\test.py
+      - name: Launcher syntax (Unix)
+        if: runner.os != 'Windows'
+        run: sh -n olax.sh && ./olax.sh --help
+      - name: Launcher (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: olax.cmd --help
+  ota:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.24.x'
+          cache: false
+      - run: python ota/fetch_vendor.py
+      - run: go -C ota test -race ./...
+      - run: go -C ota vet ./...
+      - run: python -m unittest discover -s ota -p 'test_*.py' -v
+      - name: ARM build (no device)
+        working-directory: ota
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o /tmp/olax-updater .
