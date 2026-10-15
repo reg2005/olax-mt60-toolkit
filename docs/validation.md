@@ -33,3 +33,11 @@
 
 Offline matrix: [GitHub Actions](https://github.com/reg2005/olax-mt60-toolkit/actions).
 Состояние CI проверяется отдельно и не повышает hardware-статус релиза.
+
+## GitHub Actions на момент выпуска
+
+Workflow опубликован, но запуск [38730153094](https://github.com/reg2005/olax-mt60-toolkit/actions/runs/38730153094)
+не стартовал ни на одном runner: GitHub сообщил блокировку аккаунта из-за billing
+issue. Это инфраструктурный отказ до тестов, не результат выполнения тестов.
+Linux/Windows CI-результат отсутствует. После устранения ограничения можно
+повторить workflow через Actions → Offline safety checks → Run workflow.
